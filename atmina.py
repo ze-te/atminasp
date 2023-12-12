@@ -34,7 +34,7 @@ btn9.grid(row=1, column=3)
 btn10.grid(row=1, column=4)
 btn11.grid(row=1, column=5)
 
-myImg1=ImageTk.PhotoImage(Image.open("1.png"))
+myImg1=ImageTk.PhotoImage(Image.open("1.png").resize(200,300))
 myImg2=ImageTk.PhotoImage(Image.open("2.png"))
 myImg3=ImageTk.PhotoImage(Image.open("3.png"))
 myImg4=ImageTk.PhotoImage(Image.open("4.png"))
