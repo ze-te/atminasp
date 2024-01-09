@@ -26,16 +26,21 @@ def btnClick(btn,number):
         if imageList[answers[0]]==imageList[answers[1]]:
             for key in answer_dict:
                 key["state"]=DISABLED
+            correctAns+=2
             if correctAns==2:
                 messagebox.showinfo("uzmineji")
+                correctAns=0
             else:
                 messagebox.showinfp("neuzmineji")
                 for key in answer_dict:
                     key["image"]="00.jpg"
-                count=0
-                answers=[]
-                answer_dict={}
+            count=0
+            answers=[]
+            answer_dict={}
     return 0
+
+if correctAns==6:
+    messagebox.showinfo("tu uzvareji")
 
 btn0=Button(width=200, height=300, image=bgImg, command=lambda:btnClick(btn0,0))
 btn1=Button(width=200, height=300, image=bgImg, command=lambda:btnClick(btn1,1))
