@@ -22,7 +22,7 @@ answers=[]
 answer_dict={} #kas pies[iests salidzina ar atnildem nosaraksta]
 
 
-def btnClick(btn,number):
+def btnClick(btn,number): #kas notiek klikscinot uz pogam (versanas vala)
     global count, correctAns, answers,answer_dict
     if btn["image"]=="pyimage1"and count<2:
         btn["image"]=imageList[number]
@@ -49,7 +49,8 @@ def btnClick(btn,number):
 if correctAns==6:
     messagebox.showinfo("tu uzvareji")
 
-def reset():
+
+def reset(): #speles atjaunosanas funkcija
     global count, correctAns, answers,answer_dict
 
     btn0.config(state=NORMAL)
@@ -78,20 +79,24 @@ def reset():
     btn10["image"]="pyimage1"
     btn11["image"]="pyimage1"
     random.shuffle(imageList)
+    count=0
+    correctAns=0
+    answers=[]
+    answer_dict={}
     return 0
 
-btn0=Button(width=200, height=300, image=bgImg, command=lambda:btnClick(btn0,0))
-btn1=Button(width=200, height=300, image=bgImg, command=lambda:btnClick(btn1,1))
-btn2=Button(width=200, height=300, image=bgImg, command=lambda:btnClick(btn2,2))
-btn3=Button(width=200, height=300, image=bgImg, command=lambda:btnClick(btn3,3))
-btn4=Button(width=200, height=300, image=bgImg, command=lambda:btnClick(btn4,4))
-btn5=Button(width=200, height=300, image=bgImg, command=lambda:btnClick(btn5,5))
-btn6=Button(width=200, height=300, image=bgImg, command=lambda:btnClick(btn6,6))
-btn7=Button(width=200, height=300, image=bgImg, command=lambda:btnClick(btn7,7))
-btn8=Button(width=200, height=300, image=bgImg, command=lambda:btnClick(btn8,8))
-btn9=Button(width=200, height=300, image=bgImg, command=lambda:btnClick(btn9,9))
-btn10=Button(width=200, height=300, image=bgImg, command=lambda:btnClick(btn10,10))
-btn11=Button(width=200, height=300, image=bgImg, command=lambda:btnClick(btn11,11))
+btn0=Button(width=200, height=300, bg=("black"), image=bgImg, command=lambda:btnClick(btn0,0))
+btn1=Button(width=200, height=300, bg=("black"), image=bgImg, command=lambda:btnClick(btn1,1))
+btn2=Button(width=200, height=300, bg=("black"), image=bgImg, command=lambda:btnClick(btn2,2))
+btn3=Button(width=200, height=300, bg=("black"), image=bgImg, command=lambda:btnClick(btn3,3))
+btn4=Button(width=200, height=300, bg=("black"), image=bgImg, command=lambda:btnClick(btn4,4))
+btn5=Button(width=200, height=300, bg=("black"), image=bgImg, command=lambda:btnClick(btn5,5))
+btn6=Button(width=200, height=300, bg=("black"), image=bgImg, command=lambda:btnClick(btn6,6))
+btn7=Button(width=200, height=300, bg=("black"), image=bgImg, command=lambda:btnClick(btn7,7))
+btn8=Button(width=200, height=300, bg=("black"), image=bgImg, command=lambda:btnClick(btn8,8))
+btn9=Button(width=200, height=300, bg=("black"), image=bgImg, command=lambda:btnClick(btn9,9))
+btn10=Button(width=200, height=300, bg=("black"), image=bgImg, command=lambda:btnClick(btn10,10))
+btn11=Button(width=200, height=300, bg=("black"), image=bgImg, command=lambda:btnClick(btn11,11))
 
 btn0.grid(row=0, column=0)
 btn1.grid(row=0, column=1)
@@ -119,6 +124,7 @@ imageList=[myImg1,myImg1,myImg2,myImg2,myImg3,myImg3,
 random.shuffle(imageList)
 
 
+
 galvenaizvelne=Menu(gameWindow)
 gameWindow.config(menu=galvenaizvelne)
 
@@ -128,7 +134,17 @@ galvenaizvelne.add_cascade(label="Opcijas", menu=opcijas)
 opcijas.add_command(label="jauna spēle", command=reset)
 opcijas.add_cascade(label="iziet", command=gameWindow.quit)
 
-galvenaizvelne.add_command(label="Par programmu")
+def info(): #speles noteikumu loga funkcija
+    logs=Toplevel()
+    logs.title("Par programmu")
+    desc=Label(logs,text="Mērķis: atrast vienādus attēlus, verot tos vaļā pa vienam")
+    desc.grid(row=0,column=0)
+    desc=Label(logs,text="Spēles gaita: atverot vaļā vienu lodziņu, jāatrod bildes pāris")
+    desc.grid(row=1,column=0)
+   
+
+
+galvenaizvelne.add_command(label="Par programmu", command=info)
 
 
 
